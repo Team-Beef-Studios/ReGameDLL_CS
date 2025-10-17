@@ -69,10 +69,11 @@ BOOL CSCOUT::Deploy()
 
 void CSCOUT::SecondaryAttack()
 {
+	float fov = CVAR_GET_FLOAT("vr_zoom_by_motion") > 0.5f ? 90 : 15;
 	switch (m_pPlayer->m_iFOV)
 	{
 	case 90: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 40; break;
-	case 40: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 15; break;
+	case 40: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = fov; break;
 #ifdef REGAMEDLL_FIXES
 	default:
 #else

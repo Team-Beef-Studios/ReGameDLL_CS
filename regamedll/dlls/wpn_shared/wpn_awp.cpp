@@ -74,10 +74,11 @@ BOOL CAWP::Deploy()
 
 void CAWP::SecondaryAttack()
 {
+	float fov = CVAR_GET_FLOAT("vr_zoom_by_motion") > 0.5f ? 90 : 10;
 	switch (m_pPlayer->m_iFOV)
 	{
 	case 90: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 40; break;
-	case 40: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 10; break;
+	case 40: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = fov; break;
 	default: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 90; break;
 	}
 
