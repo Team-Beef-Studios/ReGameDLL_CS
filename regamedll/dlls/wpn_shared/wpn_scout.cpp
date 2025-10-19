@@ -119,7 +119,7 @@ void CSCOUT::SCOUTFire(float flSpread, float flCycleTime, BOOL fUseAutoAim)
 
 	if (m_pPlayer->pev->fov != DEFAULT_FOV)
 	{
-		m_pPlayer->m_bResumeZoom = true;
+		m_pPlayer->m_bResumeZoom = CVAR_GET_FLOAT("vr_zoom_by_motion") < 0.5f;
 		m_pPlayer->m_iLastZoom = m_pPlayer->m_iFOV;
 
 		// reset a fov
