@@ -153,6 +153,7 @@ void drawProgressMeter(float progress, char *title)
 
 void startProgressMeter(const char *title)
 {
+	CVAR_SET_FLOAT("vr_force2d", 1);
 	MESSAGE_BEGIN(MSG_ALL, gmsgBotProgress);
 		WRITE_BYTE(BOT_PROGGRESS_START);
 		WRITE_STRING(title);
@@ -161,6 +162,7 @@ void startProgressMeter(const char *title)
 
 void hideProgressMeter()
 {
+	CVAR_SET_FLOAT("vr_force2d", 0);
 	MESSAGE_BEGIN(MSG_ALL, gmsgBotProgress);
 		WRITE_BYTE(BOT_PROGGRESS_HIDE);
 	MESSAGE_END();
