@@ -70,10 +70,11 @@ BOOL CSG550::Deploy()
 
 void CSG550::SecondaryAttack()
 {
+	float fov = CVAR_GET_FLOAT("vr_zoom_by_motion") > 0.5f ? 90 : 15;
 	switch (m_pPlayer->m_iFOV)
 	{
 	case 90: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 40; break;
-	case 40: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = 15; break;
+	case 40: m_pPlayer->m_iFOV = m_pPlayer->pev->fov = fov; break;
 #ifdef REGAMEDLL_FIXES
 	default:
 #else
@@ -190,8 +191,8 @@ void CSG550::SG550Fire(float flSpread, float flCycleTime, BOOL fUseAutoAim)
 
 #ifdef REGAMEDLL_ADD
 	m_iDirection = 1; // force positive Y addition
-	KickBack(UTIL_SharedRandomFloat(m_pPlayer->random_seed + 4, 0.75, 1.75) + m_pPlayer->pev->punchangle.x * 0.25, 
-		UTIL_SharedRandomFloat(m_pPlayer->random_seed + 5, -0.75, 0.75), 
+	KickBack(UTIL_SharedRandomFloat(m_pPlayer->random_seed + 4, 0.75, 1.75) + m_pPlayer->pev->punchangle.x * 0.25,
+		UTIL_SharedRandomFloat(m_pPlayer->random_seed + 5, -0.75, 0.75),
 		0.0, 0.0, 0.0, 0.0, 0);
 #else
 	m_pPlayer->pev->punchangle.x -= UTIL_SharedRandomFloat(m_pPlayer->random_seed + 4, 0.75, 1.25) + m_pPlayer->pev->punchangle.x * 0.25;
