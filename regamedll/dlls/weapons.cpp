@@ -731,9 +731,6 @@ LINK_HOOK_CLASS_VOID_CHAIN(CBasePlayerWeapon, KickBack, (float up_base, float la
 
 void EXT_FUNC CBasePlayerWeapon::__API_HOOK(KickBack)(float up_base, float lateral_base, float up_modifier, float lateral_modifier, float up_max, float lateral_max, int direction_change)
 {
-    if (CVAR_GET_FLOAT("vr_screenshake") < 0.5f)
-        return;
-
 #ifdef REGAMEDLL_ADD
 	real_t flKickUp = up_base;
 	float flKickLateral = lateral_base;
